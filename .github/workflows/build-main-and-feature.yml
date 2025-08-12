@@ -13,5 +13,5 @@ jobs:
       contents: write
     uses: navikt/isa-workflows/.github/workflows/build-artifact.yml@main
     with:
-      java-version: '17'
+      java-version: '21'
     secrets: inherit
