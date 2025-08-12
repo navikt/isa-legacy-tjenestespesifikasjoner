@@ -10,7 +10,7 @@ jobs:
     permissions:
       packages: write
       contents: read
-    uses: navikt/isa-felles-workflows/.github/workflows/publish-artifact.yml
+    uses: navikt/isa-felles-workflows/.github/workflows/publish-artifact.yml@main
     with:
       java-version: '21'
     secrets: inherit
