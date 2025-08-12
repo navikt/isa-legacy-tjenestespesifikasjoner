@@ -1,6 +1,7 @@
 name: Build and test artifact - create draft if main branch
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - '**'
