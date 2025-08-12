@@ -12,5 +12,5 @@ jobs:
       contents: read
     uses: navikt/isa-felles-workflows/.github/workflows/build-artifact.yml
     with:
-      java-version: '17'
+      java-version: '21'
     secrets: inherit
