@@ -143,14 +143,6 @@
 							</goals>
 						</execution>
 					</executions>
-					<configuration>
-						<toolchains>
-							<jdk>
-								<version>${java.version}</version>
-								<vendor>openjdk</vendor>
-							</jdk>
-						</toolchains>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
