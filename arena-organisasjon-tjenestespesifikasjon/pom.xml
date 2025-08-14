@@ -6,7 +6,7 @@
         <artifactId>isa-legacy-tjenestespesifikasjoner</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>arbeidogaktivitet-tjenestespesifikasjon</artifactId>
+    <artifactId>arena-organisasjon-tjenestespesifikasjon</artifactId>
     <version>${revision}</version>
     <packaging>jar</packaging>
     <properties>
@@ -17,6 +17,11 @@
         <dependency>
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.patrodyne.jvnet</groupId>
+            <artifactId>hisrc-basicjaxb-plugins</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -51,14 +56,15 @@
                             <goal>wsdl2java</goal>
                         </goals>
                         <configuration>
-                            <defaultOptions>
-                                <extraargs>
-                                    <extraarg>-xjc-XfluentAPI</extraarg>
-                                </extraargs>
-                            </defaultOptions>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${wsdl.directory}/arbeidOgAktivitetSak/Binding.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-xjc-XhashCode</extraarg>
+                                        <extraarg>-xjc-Xequals</extraarg>
+                                        <extraarg>-xjc-XtoString</extraarg>
+                                        <extraarg>-xjc-XfluentAPI</extraarg>
+                                    </extraargs>
+                                    <wsdl>${wsdl.directory}/ArenaOrganisasjonService.wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

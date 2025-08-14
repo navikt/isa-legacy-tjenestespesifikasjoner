@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>no.nav.isa.tjenestespesififkasjoner</groupId>
         <artifactId>isa-legacy-tjenestespesifikasjoner</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>arbeidogaktivitet-tjenestespesifikasjon</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>behandlearbeidogaktivitetoppgave-v1-tjenestespesifikasjon</artifactId>
     <version>${revision}</version>
     <packaging>jar</packaging>
     <properties>
@@ -17,6 +17,11 @@
         <dependency>
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.patrodyne.jvnet</groupId>
+            <artifactId>hisrc-basicjaxb-plugins</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -58,7 +63,14 @@
                             </defaultOptions>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${wsdl.directory}/arbeidOgAktivitetSak/Binding.wsdl</wsdl>
+                                    <wsdl>${wsdl.directory}/no/nav/tjeneste/virksomhet/behandleArbeidOgAktivitetOppgave/v1/Binding.wsdl</wsdl>
+                                    <bindingFiles>
+                                        <bindingFile>${wsdl.directory}/behandleArbeidOgAktivitetOppgave/bindings.xml</bindingFile>
+                                    </bindingFiles>
+                                    <extraargs>
+                                        <extraarg>-xjc-XhashCode</extraarg>
+                                        <extraarg>-xjc-Xequals</extraarg>
+                                    </extraargs>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
@@ -83,6 +95,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.patrodyne.jvnet</groupId>
+                        <artifactId>hisrc-basicjaxb-plugins</artifactId>
+                        <version>${hisrc-jaxb.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
