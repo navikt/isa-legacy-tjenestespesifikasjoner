@@ -14,6 +14,7 @@
 		<module>arena-organisasjon-tjenestespesifikasjon</module>
 		<module>arenasakvedtakservice</module>
 		<module>behandlearbeidogaktivitetoppgave-v1-tjenestespesifikasjon</module>
+		<module>nav-behandlesakogaktivitet-v1-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
