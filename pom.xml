@@ -46,6 +46,7 @@
 		<maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
 		<maven-install-plugin.version>3.1.0</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+		<cxf-xjc-boolean.version>4.1.0</cxf-xjc-boolean.version>
 		<maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
 		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
@@ -89,6 +90,13 @@
 					<groupId>org.apache.cxf</groupId>
 					<artifactId>cxf-codegen-plugin</artifactId>
 					<version>${cxf-codegen-plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.cxf.xjcplugins</groupId>
+							<artifactId>cxf-xjc-boolean</artifactId>
+							<version>${cxf-xjc-boolean.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.patrodyne.jvnet</groupId>

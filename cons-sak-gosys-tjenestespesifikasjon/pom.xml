@@ -86,19 +86,6 @@
                             </defaultOptions>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSDokBrevWSEXP.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo/dokbrev=no.nav.gosys.asbo.dokbrev</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/fault/dokbrev=no.nav.gosys.fault.dokbrev</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/DokBrev/Binding=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/DokBrev=no.nav.inf</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
                                     <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSInfotrygdSakWSEXP.wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-p</extraarg>
@@ -111,73 +98,6 @@
                                         <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/InfotrygdSak=no.nav.inf</extraarg>
                                     </extraargs>
                                 </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSNAVAnsattWSEXP.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo/navansatt=no.nav.gosys.asbo.navansatt</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/fault/navansatt=no.nav.gosys.fault.navansatt</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/NAVansatt/Binding=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/NAVansatt=no.nav.inf</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSOppgaveWSEXP.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo/oppgave=no.nav.gosys.asbo.oppgave</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/fault/oppgave=no.nav.gosys.fault.oppgave</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Oppgave/Binding=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Oppgave=no.nav.inf</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSPersonWSEXP.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo/person=no.nav.gosys.asbo.person</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/fault/person=no.nav.gosys.fault.person</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Person/Binding=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Person=no.nav.inf</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSSamhandlerWSEXP.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo/samhandler=no.nav.gosys.asbo.samhandler</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/fault/samhandler=no.nav.gosys.fault.samhandler</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Samhandler/Binding2=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Samhandler/Binding=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Samhandler=no.nav.inf</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${wsdl.directory}/cons-sak-gosys/wsdl/nav-cons-sak-gosys-3.0.0_GOSYSUtbetalingWSEXP.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo/utbetaling=no.nav.gosys.asbo.utbetaling</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/fault/utbetaling=no.nav.gosys.fault.utbetaling</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Utbetaling/Binding=no.nav.inf.binding</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/inf/Utbetaling=no.nav.inf</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
                             </wsdlOptions>
                         </configuration>
                     </execution>
@@ -187,6 +107,11 @@
                         <groupId>org.patrodyne.jvnet</groupId>
                         <artifactId>hisrc-basicjaxb-plugins</artifactId>
                         <version>${hisrc-jaxb.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf.xjcplugins</groupId>
+                        <artifactId>cxf-xjc-boolean</artifactId>
+                        <version>${cxf-xjc-boolean.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
