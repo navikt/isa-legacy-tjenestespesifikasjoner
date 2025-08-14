@@ -7,7 +7,7 @@
         <version>${revision}</version>
     </parent>
     <artifactId>arenasakvedtakservice</artifactId>
-    <version>0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>jar</packaging>
     <properties>
         <wsdl.directory>src/main/resources/wsdl</wsdl.directory>

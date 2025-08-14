@@ -15,6 +15,7 @@
 		<module>arenasakvedtakservice</module>
 		<module>behandlearbeidogaktivitetoppgave-v1-tjenestespesifikasjon</module>
 		<module>nav-behandlesakogaktivitet-v1-tjenestespesifikasjon</module>
+		<module>cons-sak-gosys-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
@@ -83,6 +84,7 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
 				<plugin>
 					<groupId>org.apache.cxf</groupId>
 					<artifactId>cxf-codegen-plugin</artifactId>
@@ -141,6 +143,11 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${maven-source-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.patrodyne.jvnet</groupId>
+					<artifactId>hisrc-basicjaxb-plugins</artifactId>
+					<version>${hisrc-jaxb.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
