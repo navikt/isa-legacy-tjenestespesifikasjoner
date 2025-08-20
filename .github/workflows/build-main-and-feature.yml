@@ -14,8 +14,6 @@ jobs:
       contents: write
     name: Build and test artifact
     runs-on: ubuntu-latest
-    env:
-      JAVA_VERSION: 21
     outputs:
       build-tag: ${{ steps.generate-build-tag.outputs.build-tag }}
     steps:
@@ -34,10 +32,10 @@ jobs:
             { "id": "github", "username": "x-access-token", "password": "${{ secrets.READER_TOKEN }}" }
           ]'
           output_file: settings.xml
-      - name: Set up JDK $JAVA_VERSION and cache dependencies
+      - name: Set up JDK 21 and cache dependencies
         uses: actions/setup-java@v4
         with:
-          java-version: $JAVA_VERSION
+          java-version: 21
           distribution: 'temurin'
           cache: 'maven'
       - name: Build with Maven
