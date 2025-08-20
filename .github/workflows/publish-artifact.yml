@@ -28,10 +28,10 @@ jobs:
             { "id": "ghcr", "username": "${{ github.actor }}", "password": "${{ secrets.GITHUB_TOKEN }}" }
           ]'
           output_file: settings.xml
-      - name: Set up JDK${{ inputs.java-version }} and cache dependencies
+      - name: Set up JDK21 and cache dependencies
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ inputs.java-version }}
+          java-version: 21
           distribution: 'temurin'
           cache: 'maven'
 
