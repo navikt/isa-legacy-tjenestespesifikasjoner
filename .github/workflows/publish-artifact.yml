@@ -1,4 +1,4 @@
-name: Publish artifact
+name: Publish artifact with build-tag to Github package registry
 
 on:
   workflow_dispatch:
