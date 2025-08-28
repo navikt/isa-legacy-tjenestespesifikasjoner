@@ -19,11 +19,6 @@
             <artifactId>jakarta.xml.ws-api</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.patrodyne.jvnet</groupId>
-            <artifactId>hisrc-basicjaxb-plugins</artifactId>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
 
     <build>
@@ -58,13 +53,7 @@
                         <configuration>
                             <defaultOptions>
                                 <extraargs>
-                                    <extraarg>-xjc-XhashCode</extraarg>
-                                    <extraarg>-xjc-Xequals</extraarg>
-                                    <extraarg>-xjc-XtoString</extraarg>
-                                    <extraarg>-xjc-Xbg</extraarg>
                                     <extraarg>-xjc-npa</extraarg>
-                                    <extraarg>-xjc-Xsetters</extraarg>
-                                    <extraarg>-xjc-Xsetters-mode=direct</extraarg>
                                     <extraarg>-p</extraarg>
                                     <extraarg>http://nav-cons-sak-gosys-3.0.0/no/nav/asbo=no.nav.gosys.asbo</extraarg>
                                     <extraarg>-p</extraarg>
@@ -102,18 +91,6 @@
                         </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.patrodyne.jvnet</groupId>
-                        <artifactId>hisrc-basicjaxb-plugins</artifactId>
-                        <version>${hisrc-jaxb.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.cxf.xjcplugins</groupId>
-                        <artifactId>cxf-xjc-boolean</artifactId>
-                        <version>${cxf-xjc-boolean.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
