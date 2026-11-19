@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>no.nav.isa.tjenestespesififkasjoner</groupId>
+        <artifactId>isa-legacy-tjenestespesifikasjoner</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>nav-journalbehandling-tjenestespesifikasjon</artifactId>
+
+    <properties>
+        <wsdl.directory>src/main/wsdl</wsdl.directory>
+    </properties>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/wsdl</directory>
+            </resource>
+        </resources>
+    </build>
+    <name>${project.artifactId}</name>
+</project>
