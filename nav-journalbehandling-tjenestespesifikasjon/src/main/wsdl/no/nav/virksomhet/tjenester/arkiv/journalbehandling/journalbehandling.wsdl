@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="journalbehandling" targetNamespace="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/v1" xmlns:tns="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/v1" xmlns:feil="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/feil/v1" xmlns:meldinger="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/meldinger/v1">
+      <xsd:import namespace="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/feil/v1" schemaLocation="feil/feil.xsd"/>
+      <xsd:import namespace="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/meldinger/v1" schemaLocation="meldinger/meldinger.xsd"/>
+      <xsd:element name="lagreDokumentOgOpprettJournalpost">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:LagreDokumentOgOpprettJournalpostRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="lagreDokumentOgOpprettJournalpostResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="response" type="meldinger:LagreDokumentOgOpprettJournalpostResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="lagreDokumentOgOpprettJournalpostugyldigDokumentInfoId" type="feil:UgyldigDokumentInfoId"/>
+      <xsd:element name="lagreDokumentOgOpprettJournalpostugyldigJournalstatus" type="feil:UgyldigJournalstatus"/>
+      <xsd:element name="oppdaterJournal">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:OppdaterJournalRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="oppdaterJournalResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="plassholder" type="xsd:anyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="oppdaterJournalugyldigDokumentInfoId" type="feil:UgyldigDokumentInfoId"/>
+      <xsd:element name="oppdaterJournalugyldigStatusovergang" type="feil:UgyldigStatusovergang"/>
+      <xsd:element name="oppdaterJournalugyldigJournalpostId" type="feil:UgyldigJournalpostId"/>
+      <xsd:element name="ferdigstillRedigerbartDokumentOgJournalpost">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:FerdigstillRedigerbartDokumentOgJournalpostRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ferdigstillRedigerbartDokumentOgJournalpostResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="plassholder" type="xsd:anyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ferdigstillRedigerbartDokumentOgJournalpostugyldigJournalstatus" type="feil:UgyldigJournalstatus"/>
+      <xsd:element name="ferdigstillRedigerbartDokumentOgJournalpostikkeFerdigstiltVedlegg" type="feil:IkkeFerdigstiltVedlegg"/>
+      <xsd:element name="gjenbrukRedigerbartDokument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:GjenbrukRedigerbartDokumentRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="gjenbrukRedigerbartDokumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="response" type="meldinger:GjenbrukRedigerbartDokumentResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="gjenbrukRedigerbartDokumentugyldigJournalstatus" type="feil:UgyldigJournalstatus"/>
+      <xsd:element name="lagreRedigerbartDokumentOgOpprettJournalpost">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:LagreRedigerbartDokumentOgOpprettJournalpostRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="lagreRedigerbartDokumentOgOpprettJournalpostResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="response" type="meldinger:LagreRedigerbartDokumentOgOpprettJournalpostResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mellomlagreRedigerbartDokument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:MellomlagreRedigerbartDokumentRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mellomlagreRedigerbartDokumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="plassholder" type="xsd:anyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mellomlagreRedigerbartDokumentugyldigJournalstatus" type="feil:UgyldigJournalstatus"/>
+      <xsd:element name="kopierDokumentSomRedigerbartVedlegg">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:KopierDokumentSomRedigerbartVedleggRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="kopierDokumentSomRedigerbartVedleggResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="response" type="meldinger:KopierDokumentSomRedigerbartVedleggResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="kopierDokumentSomRedigerbartVedleggugyldigJournalstatusPaJournalpostDetKopieresFra" type="feil:UgyldigJournalstatusPaJournalpostDetKopieresFra"/>
+      <xsd:element name="kopierDokumentSomRedigerbartVedleggugyldigJournalstatusPaJournalpostDetKopieresTil" type="feil:UgyldigJournalstatusPaJournalpostDetKopieresTil"/>
+      <xsd:element name="ferdigstillRedigerbartVedlegg">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:FerdigstillRedigerbartVedleggRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ferdigstillRedigerbartVedleggResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="plassholder" type="xsd:anyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ferdigstillRedigerbartVedleggugyldigJournalstatus" type="feil:UgyldigJournalstatus"/>
+      <xsd:element name="slettVedleggFraUtgaendeJournalpost">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:SlettVedleggFraUtgaendeJournalpostRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="slettVedleggFraUtgaendeJournalpostResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="plassholder" type="xsd:anyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="slettVedleggFraUtgaendeJournalpostugyldigJournalstatus" type="feil:UgyldigJournalstatus"/>
+      <xsd:element name="avbrytJournalpost">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:AvbrytJournalpostRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="avbrytJournalpostResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="plassholder" type="xsd:anyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="avbrytJournalpostjournalpostUnderDistribusjonEllerDistribuert" type="feil:JournalpostUnderDistribusjonEllerDistribuert"/>
+      <xsd:element name="avvikshandterOgDelDokument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:AvvikshandterOgDelDokumentRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="avvikshandterOgDelDokumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="response" type="meldinger:AvvikshandterOgDelDokumentResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="avvikshandterOgDelDokumentugyldigInput" type="feil:UgyldigInput"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="lagreDokumentOgOpprettJournalpostRequest">
+    <wsdl:part element="tns:lagreDokumentOgOpprettJournalpost" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="lagreDokumentOgOpprettJournalpostResponse">
+    <wsdl:part element="tns:lagreDokumentOgOpprettJournalpostResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="lagreDokumentOgOpprettJournalpostFault">
+    <wsdl:part element="tns:lagreDokumentOgOpprettJournalpostugyldigDokumentInfoId" name="ugyldigDokumentInfoId"/>
+  </wsdl:message>
+  <wsdl:message name="lagreDokumentOgOpprettJournalpostFault1">
+    <wsdl:part element="tns:lagreDokumentOgOpprettJournalpostugyldigJournalstatus" name="ugyldigJournalstatus"/>
+  </wsdl:message>
+  <wsdl:message name="oppdaterJournalRequest">
+    <wsdl:part element="tns:oppdaterJournal" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="oppdaterJournalResponse">
+    <wsdl:part element="tns:oppdaterJournalResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="oppdaterJournalFault">
+    <wsdl:part element="tns:oppdaterJournalugyldigDokumentInfoId" name="ugyldigDokumentInfoId"/>
+  </wsdl:message>
+  <wsdl:message name="oppdaterJournalFault1">
+    <wsdl:part element="tns:oppdaterJournalugyldigStatusovergang" name="ugyldigStatusovergang"/>
+  </wsdl:message>
+  <wsdl:message name="oppdaterJournalFault2">
+    <wsdl:part element="tns:oppdaterJournalugyldigJournalpostId" name="ugyldigJournalpostId"/>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartDokumentOgJournalpostRequest">
+    <wsdl:part element="tns:ferdigstillRedigerbartDokumentOgJournalpost" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartDokumentOgJournalpostResponse">
+    <wsdl:part element="tns:ferdigstillRedigerbartDokumentOgJournalpostResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartDokumentOgJournalpostFault">
+    <wsdl:part element="tns:ferdigstillRedigerbartDokumentOgJournalpostugyldigJournalstatus" name="ugyldigJournalstatus"/>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartDokumentOgJournalpostFault1">
+    <wsdl:part element="tns:ferdigstillRedigerbartDokumentOgJournalpostikkeFerdigstiltVedlegg" name="ikkeFerdigstiltVedlegg"/>
+  </wsdl:message>
+  <wsdl:message name="gjenbrukRedigerbartDokumentRequest">
+    <wsdl:part element="tns:gjenbrukRedigerbartDokument" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="gjenbrukRedigerbartDokumentResponse">
+    <wsdl:part element="tns:gjenbrukRedigerbartDokumentResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="gjenbrukRedigerbartDokumentFault">
+    <wsdl:part element="tns:gjenbrukRedigerbartDokumentugyldigJournalstatus" name="ugyldigJournalstatus"/>
+  </wsdl:message>
+  <wsdl:message name="lagreRedigerbartDokumentOgOpprettJournalpostRequest">
+    <wsdl:part element="tns:lagreRedigerbartDokumentOgOpprettJournalpost" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="lagreRedigerbartDokumentOgOpprettJournalpostResponse">
+    <wsdl:part element="tns:lagreRedigerbartDokumentOgOpprettJournalpostResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="mellomlagreRedigerbartDokumentRequest">
+    <wsdl:part element="tns:mellomlagreRedigerbartDokument" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="mellomlagreRedigerbartDokumentResponse">
+    <wsdl:part element="tns:mellomlagreRedigerbartDokumentResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="mellomlagreRedigerbartDokumentFault">
+    <wsdl:part element="tns:mellomlagreRedigerbartDokumentugyldigJournalstatus" name="ugyldigJournalstatus"/>
+  </wsdl:message>
+  <wsdl:message name="kopierDokumentSomRedigerbartVedleggRequest">
+    <wsdl:part element="tns:kopierDokumentSomRedigerbartVedlegg" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="kopierDokumentSomRedigerbartVedleggResponse">
+    <wsdl:part element="tns:kopierDokumentSomRedigerbartVedleggResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="kopierDokumentSomRedigerbartVedleggFault">
+    <wsdl:part element="tns:kopierDokumentSomRedigerbartVedleggugyldigJournalstatusPaJournalpostDetKopieresFra" name="ugyldigJournalstatusPaJournalpostDetKopieresFra">
+      <wsdl:documentation>&lt;p&gt;Returneres når journalposten man forsøker å kopiere fra har journalstatus ulik "J" eller "FS" eller "FL" eller "E".&lt;/p&gt; </wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kopierDokumentSomRedigerbartVedleggFault1">
+    <wsdl:part element="tns:kopierDokumentSomRedigerbartVedleggugyldigJournalstatusPaJournalpostDetKopieresTil" name="ugyldigJournalstatusPaJournalpostDetKopieresTil">
+      <wsdl:documentation>&lt;p&gt;Returneres når journalposten man forsøker å lagre et nytt vedlegg på har journalstatus ulik "D".&lt;/p&gt; </wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartVedleggRequest">
+    <wsdl:part element="tns:ferdigstillRedigerbartVedlegg" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartVedleggResponse">
+    <wsdl:part element="tns:ferdigstillRedigerbartVedleggResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ferdigstillRedigerbartVedleggFault">
+    <wsdl:part element="tns:ferdigstillRedigerbartVedleggugyldigJournalstatus" name="ugyldigJournalstatus">
+      <wsdl:documentation>&lt;p&gt;Returneres når journalposten tilknyttet vedlegget man forsøker å ferdigstille har journalstatus ulik "D".&lt;/p&gt; </wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="slettVedleggFraUtgaendeJournalpostRequest">
+    <wsdl:part element="tns:slettVedleggFraUtgaendeJournalpost" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="slettVedleggFraUtgaendeJournalpostResponse">
+    <wsdl:part element="tns:slettVedleggFraUtgaendeJournalpostResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="slettVedleggFraUtgaendeJournalpostFault">
+    <wsdl:part element="tns:slettVedleggFraUtgaendeJournalpostugyldigJournalstatus" name="ugyldigJournalstatus">
+      <wsdl:documentation>&lt;p&gt;Returneres når journalposten tilknyttet vedlegget man forsøker å slette har journalstatus ulik "D".&lt;/p&gt; </wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="avbrytJournalpostRequest">
+    <wsdl:part element="tns:avbrytJournalpost" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="avbrytJournalpostResponse">
+    <wsdl:part element="tns:avbrytJournalpostResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="avbrytJournalpostFault">
+    <wsdl:part element="tns:avbrytJournalpostjournalpostUnderDistribusjonEllerDistribuert" name="journalpostUnderDistribusjonEllerDistribuert">
+      <wsdl:documentation>&lt;p&gt;Returneres når journalposten man forsøker å avbryte er under distribusjon eller er distribuert.&lt;/p&gt; </wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="avvikshandterOgDelDokumentRequest">
+    <wsdl:part element="tns:avvikshandterOgDelDokument" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="avvikshandterOgDelDokumentResponse">
+    <wsdl:part element="tns:avvikshandterOgDelDokumentResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="avvikshandterOgDelDokumentFault">
+    <wsdl:part element="tns:avvikshandterOgDelDokumentugyldigInput" name="ugyldigInput"/>
+  </wsdl:message>
+  <wsdl:portType name="Journalbehandling">
+    <wsdl:operation name="lagreDokumentOgOpprettJournalpost">
+      <wsdl:documentation>&lt;p&gt;Operasjonen tilbyr å lagre dokument og metadata i arkivet og oppretter en journalpost tilknyttet dokumentet.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:lagreDokumentOgOpprettJournalpostRequest"/>
+      <wsdl:output message="tns:lagreDokumentOgOpprettJournalpostResponse"/>
+      <wsdl:fault message="tns:lagreDokumentOgOpprettJournalpostFault" name="lagreDokumentOgOpprettJournalpostFault"/>
+      <wsdl:fault message="tns:lagreDokumentOgOpprettJournalpostFault1" name="lagreDokumentOgOpprettJournalpostFault1"/>
+    </wsdl:operation>
+    <wsdl:operation name="oppdaterJournal">
+      <wsdl:documentation>&lt;p&gt;Operasjonen tilbyr å oppdatere dokument og metadata på en journal i arkivet.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:oppdaterJournalRequest"/>
+      <wsdl:output message="tns:oppdaterJournalResponse"/>
+      <wsdl:fault message="tns:oppdaterJournalFault" name="oppdaterJournalFault"/>
+      <wsdl:fault message="tns:oppdaterJournalFault1" name="oppdaterJournalFault1"/>
+      <wsdl:fault message="tns:oppdaterJournalFault2" name="oppdaterJournalFault2"/>
+    </wsdl:operation>
+    <wsdl:operation name="ferdigstillRedigerbartDokumentOgJournalpost">
+      <wsdl:documentation>&lt;p&gt;Tjenesteoperasjonen lagrer dokumentet på en eksisterende journalpost endelig og ferdigstiller journalposten.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:ferdigstillRedigerbartDokumentOgJournalpostRequest"/>
+      <wsdl:output message="tns:ferdigstillRedigerbartDokumentOgJournalpostResponse"/>
+      <wsdl:fault message="tns:ferdigstillRedigerbartDokumentOgJournalpostFault" name="ferdigstillRedigerbartDokumentOgJournalpostFault"/>
+      <wsdl:fault message="tns:ferdigstillRedigerbartDokumentOgJournalpostFault1" name="ferdigstillRedigerbartDokumentOgJournalpostFault1"/>
+    </wsdl:operation>
+    <wsdl:operation name="gjenbrukRedigerbartDokument">
+      <wsdl:documentation>&lt;p&gt;Tjenesteoperasjonen kopierer et eksisterende redigerbart dokument, lagrer det i redigerbart tilstand og oppretter en journalpost på samme bruker, mottaker, sak og fagområde tilknyttet dokumentet.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:gjenbrukRedigerbartDokumentRequest"/>
+      <wsdl:output message="tns:gjenbrukRedigerbartDokumentResponse"/>
+      <wsdl:fault message="tns:gjenbrukRedigerbartDokumentFault" name="gjenbrukRedigerbartDokumentFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="lagreRedigerbartDokumentOgOpprettJournalpost">
+      <wsdl:documentation>&lt;p&gt;Tjenesteoperasjonen lagrer et nytt dokument og metadata i en redigerbar tilstand og oppretter en journalpost tilknyttet dokumentet.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:lagreRedigerbartDokumentOgOpprettJournalpostRequest"/>
+      <wsdl:output message="tns:lagreRedigerbartDokumentOgOpprettJournalpostResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="mellomlagreRedigerbartDokument">
+      <wsdl:documentation>&lt;p&gt;Tjenesteoperasjonen lagrer eksisterende redigerbart dokument på en journalpost i en redigerbar tilstand.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:mellomlagreRedigerbartDokumentRequest"/>
+      <wsdl:output message="tns:mellomlagreRedigerbartDokumentResponse"/>
+      <wsdl:fault message="tns:mellomlagreRedigerbartDokumentFault" name="mellomlagreRedigerbartDokumentFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="kopierDokumentSomRedigerbartVedlegg">
+      <wsdl:documentation>&lt;p&gt;Tjeneste for å opprette en journalstruktur for vedlegg samt lagre ned en vedleggsmal på en ny journalpost. Vedleggsmalen (i DLF-format) vil inneholde metadata som peker på det ferdigstilte dokumentet som ønskes kopiert som redigerbart vedlegg. Tjenesten tilrettelegger for at det redigerbare vedlegget kan kopieres til en ny journalpost.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:kopierDokumentSomRedigerbartVedleggRequest"/>
+      <wsdl:output message="tns:kopierDokumentSomRedigerbartVedleggResponse"/>
+      <wsdl:fault message="tns:kopierDokumentSomRedigerbartVedleggFault" name="kopierDokumentSomRedigerbartVedleggFault"/>
+      <wsdl:fault message="tns:kopierDokumentSomRedigerbartVedleggFault1" name="kopierDokumentSomRedigerbartVedleggFault1"/>
+    </wsdl:operation>
+    <wsdl:operation name="ferdigstillRedigerbartVedlegg">
+      <wsdl:documentation>&lt;p&gt;Tjeneste for å lagre et vedlegg på en eksisterende journalpost endelig.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:ferdigstillRedigerbartVedleggRequest"/>
+      <wsdl:output message="tns:ferdigstillRedigerbartVedleggResponse"/>
+      <wsdl:fault message="tns:ferdigstillRedigerbartVedleggFault" name="ferdigstillRedigerbartVedleggFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="slettVedleggFraUtgaendeJournalpost">
+      <wsdl:documentation>&lt;p&gt;Tjeneste for å slette et vedlegg på en utgående journalpost som er under arbeid.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:slettVedleggFraUtgaendeJournalpostRequest"/>
+      <wsdl:output message="tns:slettVedleggFraUtgaendeJournalpostResponse"/>
+      <wsdl:fault message="tns:slettVedleggFraUtgaendeJournalpostFault" name="slettVedleggFraUtgaendeJournalpostFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="avbrytJournalpost">
+      <wsdl:documentation>&lt;p&gt;Tjeneste for å avbryte en utgående journalpost så fremt den ikke er distrubert/under distribusjon.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:avbrytJournalpostRequest"/>
+      <wsdl:output message="tns:avbrytJournalpostResponse"/>
+      <wsdl:fault message="tns:avbrytJournalpostFault" name="avbrytJournalpostFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="avvikshandterOgDelDokument">
+      <wsdl:documentation>&lt;p&gt;Tjeneste for å splitte og avvikshåndtere et dokument&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:avvikshandterOgDelDokumentRequest"/>
+      <wsdl:output message="tns:avvikshandterOgDelDokumentResponse"/>
+      <wsdl:fault message="tns:avvikshandterOgDelDokumentFault" name="avvikshandterOgDelDokumentFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

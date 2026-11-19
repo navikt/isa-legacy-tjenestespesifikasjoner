@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/meldinger/v1" version="1.2" xmlns:meldinger="http://nav.no/virksomhet/tjenester/arkiv/journalbehandling/meldinger/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="Fildetaljer">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="batchNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Brukes ved skanning av inngående dokumenter.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angir navnet på batchen dokumentet var en del av. Batchnavn i kombinasjon med skannet dato skal være unik verdi. Feltet brukes også i forbindelse med konvertering.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fil" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fysisk dokument - bytearray&lt;/span&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fildetaljerId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Må settes hvis tjenesten brukes til å oppdatere objektet&lt;/span&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="filnavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Navnet på pdf-fila som ble skannet av TS eller TI, før det ble arkivert. Filnavn blir generert av skanning løsning. Feltet brukes også i forbindelse med konvertering.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filtypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Filtypen til filen i dokumentlageret&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="variantFormatKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angivelse av variant et dokument forekommer i, for eksempel produksjonsformat, arkivformat og ”sladdet dokument”&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SkannetInnhold">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="skannetInnholdId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Må settes hvis tjenesten brukes til å oppdatere objektet&lt;/span&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="vedleggInnhold" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Beskriver innholdet i dokumentet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="vedleggNr" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Sorteringsnr for vedlegg&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DokumentInfo">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="dokumentInfoId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Må settes hvis tjenesten brukes til å oppdatere objektet eller hvis journalpost skal oppdateres med et eksisterende dokument.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Id til dokumentinformasjonen&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="skannetInnholdListe" type="meldinger:SkannetInnhold">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;SkannetInnhold&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fildetaljerListe" type="meldinger:Fildetaljer">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd ved journalstatus J, FS og FL.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;- journalpost skal oppdateres med et eksisterende dokument (dokumentInfoId og ikke journalpostDokumentInfoRelasjonId er med som input)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Objekt som inneholder filinformasjon. Kan også ta inn fysisk fil (bytearray)&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="kategoriKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;- journalpost skal oppdateres med et eksisterende dokument (dokumentInfoId og ikke journalpostDokumentInfoRelasjonId er med som input)&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Angir kategori dokument &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt; &lt;/span&gt;&lt;/p&gt;&lt;table border="1"&gt;&lt;col width="50.0%"&gt;&lt;/col&gt;&lt;col width="50.0%"&gt;&lt;/col&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Kode&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Beskrivelse&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;B&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Brev&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;VB&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Vedtaksbrev&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IB&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Infobrev&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;ES&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Elektronisk skjema&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;TS&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tolkbart skjema&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IS&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ikke tolkbart skjema&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;EP&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;E-post&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;F&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Faktura&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;KS&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Konverterte data fra system&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;KD&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Konvertert fra elektronisk arkiv&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;KM&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Konvertert fra papirarkiv (skannet)&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dokumentFerdigDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato for ferdigstillelse av dokument&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dokumentstatusKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd for journalpostType U (utgående) og N (notat). &lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;- journalpost skal oppdateres med et eksisterende dokument (dokumentInfoId og ikke journalpostDokumentInfoRelasjonId er med som input)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Statuskode for å styre dokumentproduksjon&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="tittel" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;- journalpost skal oppdateres med et eksisterende dokument (dokumentInfoId og ikke journalpostDokumentInfoRelasjonId er med som input)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dokumentets tittel/innhold&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="brevkode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Kun relevant for utgående brev. Behov dersom det er feil i en brevmal, og man må finne hvilke utgående dok / interne notater det gjelder.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="brevgruppe" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Brevgruppe som dokumentet tilhører&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="konfidensialitet" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Sikkerhetsklassifisering av dokument&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="sensitivt" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U. &lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;- journalpost skal oppdateres med et eksisterende dokument (dokumentInfoId og ikke journalpostDokumentInfoRelasjonId er med som input)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;2 graderinger (Personsensitivt og Ikke personsensitivt). Skal brukes av selvbetjeningsløsning for å bestemme om bruker kan se dokumentene.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="integritet" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Sikkerhetsklassifisering av dokument&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="tilgjengelighet" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Sikkerhetsklassifisering av dokument&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="innskrenketPartsinnsyn" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Om bruker skal få tilgang til dokument skal vurderes i forhold til&lt;span&gt;  &lt;/span&gt;Forvaltningsloven § 19 c: (innskrenket adgang til visse slags opplysninger).” som det av hensyn til hans helse eller hans forhold til personer som står ham nær, må anses utilrådelig at han får kjennskap til; likevel slik at opplysningene på anmodning skal gjøres kjent for en representant for parten når ikke særlige grunner taler mot det.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="organInternt" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Om bruker skal få tilgang til dokument skal vurderes i forhold til&lt;span&gt;  &lt;/span&gt;Forvaltningsloven § 19 c: (innskrenket adgang til visse slags opplysninger).” som det av hensyn til hans helse eller hans forhold til personer som står ham nær, må anses utilrådelig at han får kjennskap til; likevel slik at opplysningene på anmodning skal gjøres kjent for en representant for parten når ikke særlige grunner taler mot det.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;- journalpost skal oppdateres med et eksisterende dokument (dokumentInfoId og ikke journalpostDokumentInfoRelasjonId er med som input)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Benyttes for optimistisk låsing&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="JournalpostDokumentInfoRelasjon">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="journalpostDokumentInfoRelasjonId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Må settes hvis tjenesten brukes til å oppdatere objektet&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dokumentInfo" type="meldinger:DokumentInfo">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd ved journalstatus J, FS og FL&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Objekt som inneholder dokumentinformasjon.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tilknyttetJournalpostSomKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angivelse av om dokumentet er hovedDokument eller vedlegg i forsendelse&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tilknyttetAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;SaksbehandlerNavn som har knyttet dokumentet til forsendelsen&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Bruker">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="brukerId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fødselsnummer /tss id til personen(e) /organisasjon journalposten gjelder. Dersom journalposten gjelder flere personer, legges fødselsnummer inn for disse.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="brukerInfoId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Tahoma;"&gt;&lt;span style="font-size:8pt;"&gt;Påkrevd hvis objektet oppdateres.&lt;/span&gt;&lt;span style="font-size:8pt;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Id til Bruker-objekt.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="brukertypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Definerer type gjelderId&lt;/p&gt;&lt;table border="1"&gt;&lt;col width="50.0%"&gt;&lt;/col&gt;&lt;col width="50.0%"&gt;&lt;/col&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Kode&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Beskrivelse&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;PERSON&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Person (Fødselsnummer)&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;ORGANISASJON&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Organisasjon (Org.nr)&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;SAMHANDLER&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Samhandler (tss_ekstern_id)&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Kryssreferanse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="kryssreferanseId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Må settes hvis tjenesten brukes til å oppdatere objektet&lt;/span&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="referanseId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Referanse (intern eller ekstern)&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="referanseNr" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Sorteringsnummer for journalposter med kryssReferanse&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="referansetypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Definerer type referanse&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Saksrelasjon">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Saksbehandler navn skal overføres dersom attributter i Saksrelasjon oppdateres.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Saksrelasjonen brukes til å knytte JournalPoster til en saksId. Fordi man skal beholde knytning mellom sak og Journal selv om denne er feilregistrert er relasjonen et eget objekt&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fagsystemKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Hvilket system saken tilhører&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="feilregistrert" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;True hvis knytningen mellom sak og journalpost ikke lenger er gyldig&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="sakId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id på saken&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="saksrelasjonId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Må settes hvis tjenesten brukes til å oppdatere objektet&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endretAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Saksbehandler eller system som har opprettet journalpost&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LagreDokumentOgOpprettJournalpostRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="saksrelasjon" type="meldinger:Saksrelasjon">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Saksrelasjonen brukes til å knytte JournalPoster til en saksId. Fordi man skal beholde knytning mellom sak og Journal selv om denne er feilregistrert er relasjonen et eget objekt&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kryssreferanseListe" type="meldinger:Kryssreferanse">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Objekt som inneholder en referanse (intern eller ekstern)&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="journalpostDokumentInfoRelasjonListe" type="meldinger:JournalpostDokumentInfoRelasjon">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd ved journalstatus J, FS og FL.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Objekt som inneholder informasjon om knytning mellom dokument og journalpost JournalpostDomumentInfoRelasjon&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ekspedertDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dato for utsendelse gjennom sentral print. Vil først kunne benyttes når sentral print sender tilbakemelding til Journal arkiv med status ekspedert og dato.  &lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="elektroniskDistribusjon" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Flagg som benyttes for å holde tilbake sentral print av brev i Pensjonsløsningen (brev tilgjengeliggjøres kun i selvbetjeningsløsning).&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="faktiskDistribusjonskanalKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Angir om dokumentet er distribuert via sentral print eller lokal print.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Feltet vil også dekke fremtidig behov for å registrere hva som er distribuert elektronisk via selvbetjeningsløsningen.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjelderListe" type="meldinger:Bruker">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Informasjon om hvem journalen holder på informasjon om&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="land" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Land det har kommet blankett fra eller som det skal sendes blankett til. Kun e-blanketter som skal til og fra utenlandske myndigheter.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="merknad" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fritekstfelt for å legge inn kommentarer til dokumenthåndtering (Ikke saksbehandling). Krever regler for bruk i forhold til sensitive opplysninger, om feltet vil være tilgjengelig ved partsinnsyn osv.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottakskanalKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fritekstfelt for å legge inn kommentarer til dokumenthåndtering (Ikke saksbehandling). Krever regler for bruk i forhold til sensitive opplysninger, om feltet vil være tilgjengelig ved partsinnsyn osv.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottattAdressatDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Tidspunkt for mottak av utgående elektroniske forsendelser&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottattDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dato dokumentet mottatt&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="sendtPrintDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Datoen journalposten ble plukket ut til Sentral Print. Brukes ikke der status = FL&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utsendingskanalKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angivelse av hvilken kanal et dokument har blitt sendt ut gjennom.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="innhold" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Beskriver innhold i hoveddokumentet. Innholdsfeltet må brukes av alle, men verdier/ innholdet i feltet er fagspesifikt. Ved fritekstbrev kan dokumentKategoriene f.eks være: Informasjon, vedtak, forespørsel.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Dette feltet skal også benyttes til å angi beskrivelse av konverterte grunnblanketter.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Bidrag vil benytte dette feltet i stedet for sin gamle tjeneste&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="journalForendeEnhetId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd ved journalstatus M og J.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Journalførende enhet er sammen med ”fagområde” fordelingsnøkkel for inngående brev.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalposttypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angir om forsendelsen er 1) inngående 2) utgående 3) internt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalstatusKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Statuskoder for inngående og utgående dokumenter: &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;table border="1"&gt;&lt;col width="43"&gt;&lt;/col&gt;&lt;col width="222"&gt;&lt;/col&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Kode&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Beskrivelse&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;MO&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Mottatt&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;M&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Midlertidig journalført / Fordelt&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;J&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Journalført&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;U&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Utgår før tilknytning til sak&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;UB&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Dokument har ukjent bruker&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;R&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Reservert &lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;D&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Under arbeid&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;FL&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ferdig og klar for lokal print&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;FS&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ferdig og klar for sentral print&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;E&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ekspedert (brukes ikke for fase 2)&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;A&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Avbrutt&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="kravtype" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Generisk felt på tvers av fagsystem. Kravtype kan være for eksempel søknad, klage, informasjon.&lt;span&gt;  &lt;/span&gt;Begrepet kravtype kan brukes av alle, men verdier/ innholdet i feltet er fagspesifikt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dokumentDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato på hoveddokument/forsendelse (dato påført dokumentet av avsender, eller av NAV). For inngående brev må denne registreres manuelt av saksbehandler. Hvis dokumentet mangler dato, skal feltet være tomt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fagomradeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span style="font-size:10pt;font-family:Arial;"&gt;Ikke påkrevd ved journalstatus MO, UB&lt;/span&gt;&lt;span&gt;, M og U&lt;/span&gt;&lt;span style="font-size:10pt;font-family:Arial;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:10pt;font-family:Arial;"&gt;Fagområdet journalposten tilhører, for eksempel dagpenger, kontantstøtte og pensjon.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fordeling" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fagspesifikk fordelingskoder skal sammen med fagomrade brukes for å rute midlertidig journalført dokument videre til saksansvarlig enhet som skal journalføre. (Pensjon vil bruke journalførende enhet – og ikke dette feltet for fordeling)).&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="avsenderMottaker" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U. Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;&lt;span&gt;-&lt;span&gt;          &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span&gt;dokumentet er et notat&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Navn på dokumentets avsender (ved inngående dokument) eller mottaker (ved utgående dokument)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="avsenderMottakerId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fødselsnummer eller organisasjonsnr (TSS)&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="opprettetAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Saksbehandler eller system som har opprettet journalpost&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LagreDokumentOgOpprettJournalpostResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="journalpostId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Id til opprettet journalpost&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReturInfo">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="returInfoId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Må settes hvis tjenesten brukes til å oppdatere objektet&lt;/span&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="returDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato for når forsendelsen har kommet i retur&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="arsakReturKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="adresseSendtIgjen" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angivelse av evt. adresse hvis forsendelsen forsøkes sendt på nytt&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="sendtIgjenDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato for når forsendelsen evt. forsøkes sendt på nytt&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p &gt;Påkrevd for oppdatering.&lt;/p&gt;&lt;p &gt;Benyttes for optimistisk låsing.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OppdaterJournalRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="antallRetur" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Antall ganger et utgående brev har kommet i retur&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="avsenderMottaker" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U. Følgende unntak (uavhengig av status):&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;&lt;span&gt;-&lt;span&gt;          &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span&gt;dokumentet er et notat&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Navn på dokumentets avsender (ved inngående dokument) eller mottaker (ved utgående dokument)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="avsenderMottakerId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fødselsnummer eller organisasjonsnr (TSS)&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="avsendtReturDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato for sist gang brevet har blitt sendt på nytt. Settes manuelt til dagens dato dersom antall retur er oppdatert uten at dato er angitt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dokumentDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato på hoveddokument/forsendelse (dato påført dokumentet av avsender, eller av NAV). For inngående brev må denne registreres manuelt av saksbehandler. Hvis dokumentet mangler dato, skal feltet være tomt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="elektroniskDistribusjon" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Flagg som benyttes for å holde tilbake sentral print av brev i Pensjonsløsningen (brev tilgjengeliggjøres kun i selvbetjeningsløsning).&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ekspedertDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dato for utsendelse gjennom sentral print. Vil først kunne benyttes når sentral print sender tilbakemelding til Journal arkiv med status ekspedert og dato.  &lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fagomradeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span style="font-size:10pt;font-family:Arial;"&gt;Ikke påkrevd ved journalstatus MO, UB&lt;/span&gt;&lt;span&gt;, M og U&lt;/span&gt;&lt;span style="font-size:10pt;font-family:Arial;"&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:10pt;font-family:Arial;"&gt;Fagområdet journalposten tilhører, for eksempel dagpenger, kontantstøtte og pensjon.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="faktiskDistribusjonskanalKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Angir om dokumentet er distribuert via sentral print eller lokal print.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Feltet vil også dekke fremtidig behov for å registrere hva som er distribuert elektronisk via selvbetjeningsløsningen.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fordeling" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fagspesifikk fordelingskoder skal sammen med fagomrade brukes for å rute midlertidig journalført dokument videre til saksansvarlig enhet som skal journalføre. (Pensjon vil bruke journalførende enhet – og ikke dette feltet for fordeling)).&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="innhold" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Beskriver innhold i hoveddokumentet. Innholdsfeltet må brukes av alle, men verdier/ innholdet i feltet er fagspesifikt. Ved fritekstbrev kan dokumentKategoriene f.eks være: Informasjon, vedtak, forespørsel.&lt;/span&gt;&lt;/p&gt;&lt;p class="MsoNormal"&gt;&lt;span&gt;Dette feltet skal også benyttes til å angi beskrivelse av konverterte grunnblanketter.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Bidrag vil benytte dette feltet i stedet for sin gamle tjeneste&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="journalForendeEnhetId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd ved journalstatus M og J.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Journalførende enhet er sammen med ”fagområde” fordelingsnøkkel for inngående brev.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalpostId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id for journalposten&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalposttypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angir om forsendelsen er 1) inngående 2) utgående 3) internt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalstatusKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Statuskoder for inngående og utgående dokumenter: &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;table border="1"&gt;&lt;col width="43"&gt;&lt;/col&gt;&lt;col width="222"&gt;&lt;/col&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Kode&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;&lt;b&gt;Beskrivelse&lt;/b&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;MO&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Mottatt&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;M&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Midlertidig journalført / Fordelt&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;J&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Journalført&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;U&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Utgår før tilknytning til sak&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;UB&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Dokument har ukjent bruker&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;R&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Reservert &lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;D&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Under arbeid&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;FL&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ferdig og klar for lokal print&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;FS&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ferdig og klar for sentral print&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;E&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Ekspedert (brukes ikke for fase 2)&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;A&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Avbrutt&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="kravtype" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Generisk felt på tvers av fagsystem. Kravtype kan være for eksempel søknad, klage, informasjon.&lt;span&gt;  &lt;/span&gt;Begrepet kravtype kan brukes av alle, men verdier/ innholdet i feltet er fagspesifikt.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="land" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Land det har kommet blankett fra eller som det skal sendes blankett til. Kun e-blanketter som skal til og fra utenlandske myndigheter.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="lestDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Dato som angir om og når bruker har lest den elektroniske forsendelsen&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="merknad" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fritekstfelt for å legge inn kommentarer til dokumenthåndtering (Ikke saksbehandling). Krever regler for bruk i forhold til sensitive opplysninger, om feltet vil være tilgjengelig ved partsinnsyn osv.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottakskanalKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Fritekstfelt for å legge inn kommentarer til dokumenthåndtering (Ikke saksbehandling). Krever regler for bruk i forhold til sensitive opplysninger, om feltet vil være tilgjengelig ved partsinnsyn osv.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utsendingskanalKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Angivelse av hvilken kanal et dokument har blitt sendt ut gjennom.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottattAdressatDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Tidspunkt for mottak av utgående elektroniske forsendelser&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottattDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dato dokumentet mottatt&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="originaltBestilt" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Brukes for å markere at det er bestilt original fra papirarkiv. Det er aktuelt i forbindelse med utenlandssaker.&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="sendtPrintDato" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Datoen journalposten ble plukket ut til Sentral Print. Brukes ikke der status = FL&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endretAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Saksbehandler eller system som har opprettet journalpost&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="versjon" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Benyttes for optimistisk låsing&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gjelderListe" type="meldinger:Bruker">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Informasjon om hvem journalen holder på informasjon om&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="journalpostDokumentInfoRelasjonListe" type="meldinger:JournalpostDokumentInfoRelasjon">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Påkrevd ved journalstatus J, FS og FL.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Objekt som inneholder informasjon om knytning mellom dokument og journalpost JournalpostDomumentInfoRelasjon&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="saksrelasjon" type="meldinger:Saksrelasjon">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p class="MsoNormal"&gt;&lt;span&gt;Ikke påkrevd ved journalstatus MO, UB, M og U.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Saksrelasjonen brukes til å knytte JournalPoster til en saksId. Fordi man skal beholde knytning mellom sak og Journal selv om denne er feilregistrert er relasjonen et eget objekt&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kryssreferanseListe" type="meldinger:Kryssreferanse">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;Objekt som inneholder en referanse (intern eller ekstern)&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="returInfoListe" type="meldinger:ReturInfo">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;&lt;span style="font-size:11pt;font-family:Calibri;"&gt;ReturInfo&lt;/span&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FerdigstillRedigerbartDokumentOgJournalpostRequest">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id til journalposten på dokumentet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer det redigerbare dokumentet i dokumentlageret&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="sentralDistribusjon" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Angivelse av om dokumentet skal skrives ut på sentral print&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="redigerbartDokument" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dokumentet inklusive evt. kopidokument i DLF-format. Dialogue Live Format (DLF) er et interaktivt dokument som blitt generert av HP Dialogue Live &lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ferdigstiltDokument" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dokumentet i PDF-format.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GjenbrukRedigerbartDokumentRequest">
+    <xsd:sequence>
+      <xsd:element name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Journalførende enhet (enheten som bestiller brevet). Gyldige verdier er representert av enhetId i informasjonsobjektet &lt;a href="http://e11apvl121.utv.internsone.local/site/nav.no/virksomhet/organisering/enhet/v1/Enhet.html" rel="nofollow"&gt;Enhet&lt;/a&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id til journalposten på dokumentet som skal gjenbrukes&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalForendeEnhetId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer filen i dokumentlageret&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="opprettetAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Navn på saksbehandler som bestiller brevet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Utvidelse">
+    <xsd:sequence>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+    <xsd:anyAttribute namespace="##any" processContents="lax"/>
+  </xsd:complexType>
+  <xsd:complexType name="GjenbrukRedigerbartDokumentUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="meldinger:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GjenbrukRedigerbartDokumentResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID til filen som blitt lagret i dokumentlageret&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id til journalposten på dokumentet som blitt opprettet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="meldinger:GjenbrukRedigerbartDokumentUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LagreRedigerbartDokumentOgOpprettJournalpostRequest">
+    <xsd:sequence>
+      <xsd:element name="redigerbartDokument" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Redigerbart dokument i DLF-format. Dialogue Live Format (DLF) er et interaktivt dokument som blitt generert av HP Dialogue Live&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="sakId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Saksnummer i fagsystem&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fagsystemKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fagsystem som saken tilhører. FagsystemKode og sakId utgjør til sammen en unik nøkkel.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Kode/Dekode&lt;/b&gt;&lt;/p&gt;&lt;p class="code-java"&gt;BID = Bidrag
+PEN = Pensjon
+OVR = Øvrig
+MOT = Skanning
+OKO = Økonomi
+BII = Bidrag innkreving
+FS22 = GOSYS
+FS19 = GSAK
+AO01 = Arena
+IT01 = Infotrygd&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fagomradeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Kode for fagområdet journalposten tilhører (for eksempel dagpenger (DAG), kontantstøtte (KON) og pensjon (PEN)). Fullstendig kodeverk &lt;a href="http://confluence.adeo.no/download/attachments/18057494/DDK_JOARK_Kodeverk-732.xls?version=1&amp;modificationDate=1331127070000"&gt;vedlagt&lt;/a&gt;.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalforendeEnhetId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Journalførende enhet, dvs enhet som bestiller brevet. Gyldige verdier er representert av enhetId i informasjonsobjektet &lt;a href="http://e11apvl121.utv.internsone.local/site/nav.no/virksomhet/organisering/enhet/v1/Enhet.html" rel="nofollow"&gt;Enhet&lt;/a&gt;.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="opprettetAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Saksbehandler som bestiller brevet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tittel" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Dokumentets tittel/navn&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottaker" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Navn på dokumentets mottaker (ved utgående dokument). Ikke påkrevd for notater (journalpostType N)&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="mottakerId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fødselsnummer eller tss ekstern id til mottaker.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="landKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Kode for hvilket land avsender/mottakerinstitusjon er i.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="brukerId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fødselsnummer/tss id/organisasjonsnummer til personen(e)/organisasjonen(e) journalposten gjelder.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="brukerTypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Kode som definerer type bruker.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;/b&gt;PERSON = Person (fødselsnummer)
+ORGANISASJON = Organisasjon (organisasjonsnummer)
+SAMHANDLER = Samhandler (tss ekstern id)&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="brevkodeId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Unik id for skjematype (inngående) eller brev (utgående). Gyldige verdier: &lt;a href="http://confluence.adeo.no/display/sysdok/ESBV0533_v1+-+EESSIBlankett#ESBV0533_v1-EESSIBlankett-brevkoder"&gt;Link 1&lt;/a&gt;, &lt;a href="http://confluence.adeo.no/display/sysdok/ESBV0532_v1+-+Internt+notat#ESBV0532_v1-Interntnotat-brevkoder"&gt;Link 2&lt;/a&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="sensitivt" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Angir om dokumentet er personsensitivt (true) eller ikke personsensitivt (false). Skal brukes av selvbetjeningsløsning for å bestemme om bruker kan se dokumentene.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LagreRedigerbartDokumentOgOpprettJournalpostUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="meldinger:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LagreRedigerbartDokumentOgOpprettJournalpostResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id til journalposten på dokumentet som blitt opprettet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID til filen som blitt lagret i dokumentlageret&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="meldinger:LagreRedigerbartDokumentOgOpprettJournalpostUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MellomlagreRedigerbartDokumentRequest">
+    <xsd:sequence>
+      <xsd:element name="redigerbartDokument" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Redigerbart dokument i DLF-format. Dialogue Live Format (DLF) er et interaktivt dokument som blitt generert av HP Dialogue Live&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id til journalposten tilknyttet dokumentet som skal mellomlagres&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer det redigerbare dokumentet i dokumentlageret&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KopierDokumentSomRedigerbartVedleggRequest">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="kopieresFraJournalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId tilknyttet journalposten som dokumentet ønskes kopiert fra.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer dokumentet (i PDF-format) som ønskes kopieres.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tittel" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Tittel på dokumentet som skal kopieres.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="opprettetAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Saksbehandler som oppretter "kopi". Id overføres som kontextinformasjon og navn supplerer denne.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="kopieresTilJournalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId tilknyttet journalposten som dokumentet ønskes kopiert til.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KopierDokumentSomRedigerbartVedleggUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="meldinger:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="KopierDokumentSomRedigerbartVedleggResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId tilknyttet journalposten som dokumentet ønskes kopiert til (lik kopieresTilJournalpostId i input).&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer vedleggsmal (i DLF-format) opprettet i denne operasjonen.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="meldinger:KopierDokumentSomRedigerbartVedleggUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FerdigstillRedigerbartVedleggRequest">
+    <xsd:annotation>
+      <xsd:documentation>&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId tilknyttet vedlegget som skal ferdigstilles.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer det redigerbare vedlegget i dokumentlageret.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="redigerbartDokument" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Vedlegget i DLF-format. Dialogue Live Format (DLF) er et interaktivt dokument som blitt generert av HP Dialogue Live.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ferdigstiltDokument" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Vedlegget i PDF-format.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SlettVedleggFraUtgaendeJournalpostRequest">
+    <xsd:sequence>
+      <xsd:element name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId tilknyttet vedlegget som skal slettes.&lt;a href="http://e11apvl121.utv.internsone.local/site/nav.no/virksomhet/organisering/enhet/v1/Enhet.html"&gt;&lt;/a&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="filUUID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;UUID som identifiserer vedlegget i dokumentlageret.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endretAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Saksbehandler eller system som sist har endret journalposten. Id overføres som kontextinformasjon og navn supplerer denne.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvbrytJournalpostRequest">
+    <xsd:sequence>
+      <xsd:element name="journalpostId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId tilknyttet journalposten som skal avbrytes.&lt;a href="http://e11apvl121.utv.internsone.local/site/nav.no/virksomhet/organisering/enhet/v1/Enhet.html"&gt;&lt;/a&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endretAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Saksbehandler eller system som sist har endret journalposten. Id overføres som kontextinformasjon og navn supplerer denne.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Part">
+    <xsd:sequence>
+      <xsd:element name="ident" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fødselsnummer /tss id til personen /organisasjonsnr som journalposten gjelder for.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="identtypeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;PERSON = Person (Fødselsnummer)&lt;/p&gt;&lt;p&gt;ORGANISASJON = Organisasjon (Org.nr)&lt;/p&gt;&lt;p&gt;SAMHANDLER = Samhandler (tss_ekstern_id)&lt;span style="color:#000000;"&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Se kodeverk for relevante verdier&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvvikshandterOgDelDokumentRequest">
+    <xsd:sequence>
+      <xsd:element name="journalpostId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;JournalpostId for fil som skal splittes og avvikshåndteres&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="opprettetAvNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Saksbehandler som avvikshåndterer &lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="brukSisteSideFraOrginalen" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Angir hvorvidt den siste siden i dokumentet skal flyttes først i den nye journalposten som opprettes&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="delFraSide" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Angir fra hvilken side dokumentet skal deles fra-og-med&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="delTilSide" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Angir til hvilken side dokumentet skal deles til-og-med&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="gjelder" type="meldinger:Part">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Fødselsnummer, TSS-ID eller organisasjonsnr til personen / organisasjonen journalposten gjelder&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fagomradeKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Tema/fagområdet journalposten tilhører, for eksempel dagpenger, kontantstøtte og pensjon&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="avsenderNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Navn på dokumentets avsender&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvvikshandterOgDelDokumentUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="meldinger:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AvvikshandterOgDelDokumentResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="journalpostId" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Id på den nye journalposten som ble opprettet på det oppdelte dokumentet&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="meldinger:AvvikshandterOgDelDokumentUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
