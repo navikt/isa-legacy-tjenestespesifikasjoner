@@ -42,7 +42,7 @@ public interface Journalbehandling {
 
 
     /**
-     * <p>Operasjonen tilbyr å lagre dokument og metadata i arkivet og oppretter en journalpost tilknyttet dokumentet.</p> 
+     * <p>Operasjonen tilbyr Ã¥ lagre dokument og metadata i arkivet og oppretter en journalpost tilknyttet dokumentet.</p> 
      * 
      * @param request
      * @return
@@ -61,7 +61,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Operasjonen tilbyr å oppdatere dokument og metadata på en journal i arkivet.</p> 
+     * <p>Operasjonen tilbyr Ã¥ oppdatere dokument og metadata pÃ¥ en journal i arkivet.</p> 
      * 
      * @param request
      * @throws OppdaterJournalUgyldigJournalpostId
@@ -78,7 +78,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjenesteoperasjonen lagrer dokumentet på en eksisterende journalpost endelig og ferdigstiller journalposten.</p> 
+     * <p>Tjenesteoperasjonen lagrer dokumentet pÃ¥ en eksisterende journalpost endelig og ferdigstiller journalposten.</p> 
      * 
      * @param request
      * @throws FerdigstillRedigerbartDokumentOgJournalpostUgyldigJournalstatus
@@ -94,7 +94,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjenesteoperasjonen kopierer et eksisterende redigerbart dokument, lagrer det i redigerbart tilstand og oppretter en journalpost på samme bruker, mottaker, sak og fagområde tilknyttet dokumentet.</p> 
+     * <p>Tjenesteoperasjonen kopierer et eksisterende redigerbart dokument, lagrer det i redigerbart tilstand og oppretter en journalpost pÃ¥ samme bruker, mottaker, sak og fagomrÃ¥de tilknyttet dokumentet.</p> 
      * 
      * @param request
      * @return
@@ -127,7 +127,7 @@ public interface Journalbehandling {
         LagreRedigerbartDokumentOgOpprettJournalpostRequest request);
 
     /**
-     * <p>Tjenesteoperasjonen lagrer eksisterende redigerbart dokument på en journalpost i en redigerbar tilstand.</p> 
+     * <p>Tjenesteoperasjonen lagrer eksisterende redigerbart dokument pÃ¥ en journalpost i en redigerbar tilstand.</p> 
      * 
      * @param request
      * @throws MellomlagreRedigerbartDokumentUgyldigJournalstatus
@@ -142,7 +142,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjeneste for å opprette en journalstruktur for vedlegg samt lagre ned en vedleggsmal på en ny journalpost. Vedleggsmalen (i DLF-format) vil inneholde metadata som peker på det ferdigstilte dokumentet som ønskes kopiert som redigerbart vedlegg. Tjenesten tilrettelegger for at det redigerbare vedlegget kan kopieres til en ny journalpost.</p> 
+     * <p>Tjeneste for Ã¥ opprette en journalstruktur for vedlegg samt lagre ned en vedleggsmal pÃ¥ en ny journalpost. Vedleggsmalen (i DLF-format) vil inneholde metadata som peker pÃ¥ det ferdigstilte dokumentet som Ã¸nskes kopiert som redigerbart vedlegg. Tjenesten tilrettelegger for at det redigerbare vedlegget kan kopieres til en ny journalpost.</p> 
      * 
      * @param request
      * @return
@@ -161,7 +161,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjeneste for å lagre et vedlegg på en eksisterende journalpost endelig.</p> 
+     * <p>Tjeneste for Ã¥ lagre et vedlegg pÃ¥ en eksisterende journalpost endelig.</p> 
      * 
      * @param request
      * @throws FerdigstillRedigerbartVedleggUgyldigJournalstatus
@@ -176,7 +176,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjeneste for å slette et vedlegg på en utgående journalpost som er under arbeid.</p> 
+     * <p>Tjeneste for Ã¥ slette et vedlegg pÃ¥ en utgÃ¥ende journalpost som er under arbeid.</p> 
      * 
      * @param request
      * @throws SlettVedleggFraUtgaendeJournalpostUgyldigJournalstatus
@@ -191,7 +191,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjeneste for å avbryte en utgående journalpost så fremt den ikke er distrubert/under distribusjon.</p> 
+     * <p>Tjeneste for Ã¥ avbryte en utgÃ¥ende journalpost sÃ¥ fremt den ikke er distrubert/under distribusjon.</p> 
      * 
      * @param request
      * @throws AvbrytJournalpostJournalpostUnderDistribusjonEllerDistribuert
@@ -206,7 +206,7 @@ public interface Journalbehandling {
     ;
 
     /**
-     * <p>Tjeneste for å splitte og avvikshåndtere et dokument</p> 
+     * <p>Tjeneste for Ã¥ splitte og avvikshÃ¥ndtere et dokument</p> 
      * 
      * @param request
      * @return

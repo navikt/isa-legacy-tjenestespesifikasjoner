@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Returneres når journalposten man forsøker å avbryte er under distribusjon eller er distribuert.</p>
+ * <p>Returneres nÃ¥r journalposten man forsÃ¸ker Ã¥ avbryte er under distribusjon eller er distribuert.</p>
  * 
  * <p>Java class for JournalpostUnderDistribusjonEllerDistribuert complex type.
  * 

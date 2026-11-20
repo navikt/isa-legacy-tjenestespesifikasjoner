@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p><span style="font-size:11pt;font-family:Calibri;">Saksbehandler navn skal overføres dersom attributter i Saksrelasjon oppdateres.</span></p><p>Saksrelasjonen brukes til å knytte JournalPoster til en saksId. Fordi man skal beholde knytning mellom sak og Journal selv om denne er feilregistrert er relasjonen et eget objekt</p>
+ * <p><span style="font-size:11pt;font-family:Calibri;">Saksbehandler navn skal overfÃ¸res dersom attributter i Saksrelasjon oppdateres.</span></p><p>Saksrelasjonen brukes til Ã¥ knytte JournalPoster til en saksId. Fordi man skal beholde knytning mellom sak og Journal selv om denne er feilregistrert er relasjonen et eget objekt</p>
  * 
  * <p>Java class for Saksrelasjon complex type.
  * 

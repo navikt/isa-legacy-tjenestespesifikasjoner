@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>For at tjenesteoperasjonen skal kunne utføres må journalposten være under arbeid, hvis ikke returneres en funksjonell feil. Dvs journalstatusKode på journalposten tilknyttet journalpostId må være lik ”D” (Under arbeid).</p>
+ * <p>For at tjenesteoperasjonen skal kunne utfÃ¸res mÃ¥ journalposten vÃ¦re under arbeid, hvis ikke returneres en funksjonell feil. Dvs journalstatusKode pÃ¥ journalposten tilknyttet journalpostId mÃ¥ vÃ¦re lik "D" (Under arbeid).</p>
  * 
  * <p>Java class for UgyldigJournalstatus complex type.
  * 
