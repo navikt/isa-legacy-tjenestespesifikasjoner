@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Returneres når journalposten man forsøker å kopiere fra har journalstatus ulik "J" eller "FS" eller "FL" eller "E".</p>
+ * <p>Returneres nÃ¥r journalposten man forsÃ¸ker Ã¥ kopiere fra har journalstatus ulik "J" eller "FS" eller "FL" eller "E".</p>
  * 
  * <p>Java class for UgyldigJournalstatusPaJournalpostDetKopieresFra complex type.
  * 

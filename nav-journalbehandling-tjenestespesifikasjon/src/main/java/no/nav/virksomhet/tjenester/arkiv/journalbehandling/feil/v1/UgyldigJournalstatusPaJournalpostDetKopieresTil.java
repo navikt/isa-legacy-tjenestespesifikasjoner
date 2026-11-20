@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Returneres når journalposten man forsøker å lagre et nytt vedlegg på har journalstatus ulik "D".</p>
+ * <p>Returneres nÃ¥r journalposten man forsÃ¸ker Ã¥ lagre et nytt vedlegg pÃ¥ har journalstatus ulik "D".</p>
  * 
  * <p>Java class for UgyldigJournalstatusPaJournalpostDetKopieresTil complex type.
  * 

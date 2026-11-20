@@ -9,11 +9,17 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>udi-personstatus-v2</artifactId>
     <packaging>jar</packaging>
+
+    <properties>
+        <wsdl.directory>src/main/wsdl</wsdl.directory>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
+                <version>3.6.5</version>
                 <executions>
                     <execution>
                         <id>wsdl-to-java</id>
@@ -47,9 +53,20 @@
                 </executions>
                 <dependencies>
                     <dependency>
+                        <groupId>org.apache.cxf.xjcplugins</groupId>
+                        <artifactId>cxf-xjc-boolean</artifactId>
+                        <version>3.3.2</version>
+                    </dependency>
+                    <dependency>
                         <groupId>net.java.dev.jaxb2-commons</groupId>
                         <artifactId>jaxb-fluent-api</artifactId>
                         <version>2.1.8</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>*</groupId>
+                                <artifactId>*</artifactId>
+                            </exclusion>
+                        </exclusions>
                     </dependency>
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons</groupId>
@@ -86,6 +103,18 @@
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics-runtime</artifactId>
             <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <name>${project.artifactId}</name>
