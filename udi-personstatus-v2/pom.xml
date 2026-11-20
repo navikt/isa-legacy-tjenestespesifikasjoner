@@ -12,6 +12,8 @@
 
     <properties>
         <wsdl.directory>src/main/wsdl</wsdl.directory>
+        <java.version>11</java.version>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <build>
