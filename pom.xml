@@ -16,6 +16,9 @@
 		<module>behandlearbeidogaktivitetoppgave-v1-tjenestespesifikasjon</module>
 		<module>nav-behandlesakogaktivitet-v1-tjenestespesifikasjon</module>
 		<module>cons-sak-gosys-tjenestespesifikasjon</module>
+		<module>ereg-organisasjon-v1</module>
+		<module>nav-journalbehandling-tjenestespesifikasjon</module>
+		<module>udi-personstatus-v2</module>
 	</modules>
 
 	<distributionManagement>
